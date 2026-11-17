@@ -12,11 +12,22 @@
 <script>
 if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
 </script>
-<h1>PS4 9.00 FW GoldHEN Host by GamerHack</h1>
-<hr>
-<br>
-<h1 id="msgs" style="font-size: 30px;margin-top: 77px;margin-bottom: 455px;">Loading GoldHEN v2.4b18.14... Please Wait</h1>
-<h1 style="margin-top: 43px;">Special Thanks to:<a href="https://twitter.com/sleirsgoevy" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@sleirsgoevy</a>ChendoChap<a href="https://twitter.com/Znullptr" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@Znullptr</a>SiSTR0</h1>
+<header class="fw-hero">
+  <span class="fw-hero-num">9.00</span>
+  <span class="fw-hero-tag">GoldHEN Host</span>
+  <span class="fw-hero-by">PS4 &middot; by GamerHack</span>
+</header>
+
+<div class="loader-card">
+  <h1 id="msgs" class="loader-msg">Loading GoldHEN v2.4b18.14... Please Wait</h1>
+  <div class="loader-bar"><span></span></div>
+  <p class="loader-hint">Keep the browser open</p>
+</div>
+
+<div class="thanks">
+  <span class="thanks-label">Special thanks</span>
+  <a class="person" href="https://twitter.com/sleirsgoevy">@sleirsgoevy</a><span class="person">ChendoChap</span><a class="person" href="https://twitter.com/Znullptr">@Znullptr</a><span class="person">SiSTR0</span>
+</div>
 <script>
 function allset(){
 msgs.innerHTML = LoadedMSG
@@ -50,6 +61,23 @@ LoadedMSG = "GoldHEN v2.4b18.14 Loaded ...";
 PLfile = "goldhen_2.4b18.14.bin";
 setTimeout(load_poc, 500);
 }
+</script>
+<script>
+/* UI only: turn the loading bar green once a result text appears */
+(function(){
+try{
+var msg=document.getElementById('msgs');
+var bar=document.querySelector('.loader-bar');
+if(!msg||!bar)return;
+var t=setInterval(function(){
+var s=(msg.innerHTML||'').toLowerCase();
+if(s.indexOf('loaded')>-1||s.indexOf('success')>-1||s.indexOf('installed')>-1||s.indexOf('error')>-1){
+bar.className='loader-bar done';
+clearInterval(t);
+}
+},600);
+}catch(e){}
+})();
 </script>
 </body>
 </html>

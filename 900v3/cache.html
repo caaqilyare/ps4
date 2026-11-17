@@ -10,10 +10,38 @@ history.replaceState(null,null,'index.html');var histlength=history.length;histo
 function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));setTimeout(function(){window.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";},500)}
 function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cache Installed Successfully ✔";},1500);setTimeout(function(){window.msgs.innerHTML="Now Close And Re-Open Your Browser ...";},3500);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
 </script>
-<h1>PS4 9.00 FW Host v3.0 by GamerHack</h1>
-<hr>
-<br>
-<h1 id="msgs" style="font-size: 30px;margin-top: 77px;margin-bottom: 455px;">Wait a Moment...</h1>
-<h1 style="margin-top: 43px;">Special Thanks to:<a href="https://twitter.com/sleirsgoevy" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@sleirsgoevy</a>ChendoChap<a href="https://twitter.com/Znullptr" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@Znullptr</a>SiSTR0</h1>
+<header class="fw-hero">
+  <span class="fw-hero-num">9.00</span>
+  <span class="fw-hero-tag">Host v3.0</span>
+  <span class="fw-hero-by">PS4 &middot; by GamerHack</span>
+</header>
+
+<div class="loader-card">
+  <h1 id="msgs" class="loader-msg">Wait a Moment...</h1>
+  <div class="loader-bar"><span></span></div>
+  <p class="loader-hint">Keep the browser open while the cache installs</p>
+</div>
+
+<div class="thanks">
+  <span class="thanks-label">Special thanks</span>
+  <a class="person" href="https://twitter.com/sleirsgoevy">@sleirsgoevy</a><span class="person">ChendoChap</span><a class="person" href="https://twitter.com/Znullptr">@Znullptr</a><span class="person">SiSTR0</span>
+</div>
+<script>
+/* UI only: turn the loading bar green once a result text appears */
+(function(){
+try{
+var msg=document.getElementById('msgs');
+var bar=document.querySelector('.loader-bar');
+if(!msg||!bar)return;
+var t=setInterval(function(){
+var s=(msg.innerHTML||'').toLowerCase();
+if(s.indexOf('loaded')>-1||s.indexOf('success')>-1||s.indexOf('installed')>-1||s.indexOf('error')>-1){
+bar.className='loader-bar done';
+clearInterval(t);
+}
+},600);
+}catch(e){}
+})();
+</script>
 </body>
 </html>

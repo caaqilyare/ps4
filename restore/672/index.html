@@ -9,17 +9,45 @@ var leaker_obj={a:0};var leaker_arr=new Uint32Array(6);var oob_slave=new Uint8Ar
 </script>
 </head>
 <body onload="setTimeout(load_restrhost, 50);">
-<h1>PS4 Restore Host for 6.72 FW</h1>
-<hr>
-<br>
-<h1 id="msgs" style="font-size: 30px;margin-top: 77px;margin-bottom: 455px;">Loading Payload... Please Wait</h1>
-<h1 style="margin-top: 43px;">Designed by:<a href="https://twitter.com/GamerHack93" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@GamerHack93</a>A special thanks to all the devs on the scene.</h1>
+<header class="fw-hero">
+  <span class="fw-hero-num">6.72</span>
+  <span class="fw-hero-tag">Restore Host</span>
+  <span class="fw-hero-by">PS4 &middot; by GamerHack</span>
+</header>
+
+<div class="loader-card">
+  <h1 id="msgs" class="loader-msg">Loading Payload... Please Wait</h1>
+  <div class="loader-bar"><span></span></div>
+  <p class="loader-hint">Keep the browser open while the host is restored</p>
+</div>
+
+<div class="thanks">
+  <span class="thanks-label">Designed by</span> <a class="person" href="https://twitter.com/GamerHack93">@GamerHack93</a>
+  <p class="thanks-note">A special thanks to all the devs on the scene.</p>
+</div>
 <script>
 function load_restrhost(){
 LoadedMSG="Payload Loaded ✔";
 PLfile="payload.bin";
 setTimeout(jailbreak, 500);
 }
+</script>
+<script>
+/* UI only: turn the loading bar green once a result text appears */
+(function(){
+try{
+var msg=document.getElementById('msgs');
+var bar=document.querySelector('.loader-bar');
+if(!msg||!bar)return;
+var t=setInterval(function(){
+var s=(msg.innerHTML||'').toLowerCase();
+if(s.indexOf('loaded')>-1||s.indexOf('success')>-1||s.indexOf('installed')>-1||s.indexOf('error')>-1){
+bar.className='loader-bar done';
+clearInterval(t);
+}
+},600);
+}catch(e){}
+})();
 </script>
 </body>
 </html>

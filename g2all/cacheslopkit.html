@@ -14,10 +14,38 @@ window.applicationCache.oncached=function(e){DisplayCacheProgress();};
 window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
 window.applicationCache.onerror=function(e){window.msgs.innerHTML="Error Installing Cache! - Clear and Re-Open Your Browser ...";};
 </script>
-<h1>PS4 [5.05] 7.00 - 14.02 FW GoldHEN Host by GamerHack</h1>
-<hr>
-<br>
-<h1 id=msgs style="font-size: 30px;margin-top: 77px;margin-bottom: 455px;">Starting Cache Installation...</h1>
-<h1 style="margin-top: 43px;">Special Thanks to:<a href="https://twitter.com/_AlAzif" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@_AlAzif</a>ChendoChap<a href="https://x.com/Kameleonre_" style="color: #f31414;margin-left: 10px;margin-right: 10px;">@Kameleonre_</a>SiSTR0 Abc</h1>
+<header class="fw-hero">
+  <span class="fw-hero-num">11.50+</span>
+  <span class="fw-hero-tag">Offline Cache</span>
+  <span class="fw-hero-by">PS4 11.50 &ndash; 14.02 &middot; by GamerHack</span>
+</header>
+
+<div class="loader-card">
+  <h1 id="msgs" class="loader-msg">Starting Cache Installation...</h1>
+  <div class="loader-bar"><span></span></div>
+  <p class="loader-hint">Keep the browser open while the cache installs</p>
+</div>
+
+<div class="thanks">
+  <span class="thanks-label">Special thanks</span>
+  <a class="person" href="https://twitter.com/_AlAzif">@_AlAzif</a><span class="person">ChendoChap</span><a class="person" href="https://x.com/Kameleonre_">@Kameleonre_</a><span class="person">SiSTR0</span><span class="person">Abc</span>
+</div>
+<script>
+/* UI only: turn the loading bar green once a result text appears */
+(function(){
+try{
+var msg=document.getElementById('msgs');
+var bar=document.querySelector('.loader-bar');
+if(!msg||!bar)return;
+var t=setInterval(function(){
+var s=(msg.innerHTML||'').toLowerCase();
+if(s.indexOf('loaded')>-1||s.indexOf('success')>-1||s.indexOf('installed')>-1||s.indexOf('error')>-1){
+bar.className='loader-bar done';
+clearInterval(t);
+}
+},600);
+}catch(e){}
+})();
+</script>
 </body>
 </html>
