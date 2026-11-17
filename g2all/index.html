@@ -5,87 +5,7 @@
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<script>
-var uaFull = navigator.userAgent;
-var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
-var isPS4 = match !== null;
-var fwVersion = isPS4 ? match[1] : "Unknown";
-var fwNum = parseFloat(fwVersion);
 
-function onScriptError() {
-    msgs.innerHTML = "Content not Found! - Clear Browser Data and Re-Install Cache ...";
-}
-
-if (!isPS4) {
-    document.addEventListener("DOMContentLoaded", () => {
-        msgs.innerHTML = "Only for PS4 with Firmware 5.05 and 7.00 to 14.02";
-    });
-} else {
-    if (window.applicationCache.status == '0') {
-        if (fwNum == 5.05 || fwNum == 5.07) {
-            window.location.replace("cache505.html");
-        } else if (fwNum >= 7.00 && fwNum <= 8.52) {
-            window.location.replace("cache700.html");
-        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-            window.location.replace("cache900.html");
-        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-            window.location.replace("cachecss.html");
-        } else if (fwNum >= 11.50 && fwNum <= 14.02) {
-            window.location.replace("cacheslopkit.html");
-        } else {
-            document.addEventListener("DOMContentLoaded", () => {
-                msgs.innerHTML = 'Unsupported Firmware: <span style="color: red;">' + fwVersion + '</span>';
-            });
-        }
-    } else {
-        if (fwNum == 5.05 || fwNum == 5.07) {
-            var script = document.createElement('script');
-            script.src = "505/exploit.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        }
-        else if (fwNum >= 7.00 && fwNum <= 8.52) {
-            var script = document.createElement('script');
-            script.type = 'module';
-            script.src = "700/alert.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        }
-        else if (fwNum >= 9.00 && fwNum <= 9.60) {
-            var script = document.createElement('script');
-            script.type = 'module';
-            script.src = "900/alert.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        }
-        else if (fwNum >= 10.00 && fwNum <= 11.02) {
-            var script = document.createElement('script');
-            script.src = "css/main.js";
-            script.onerror = onScriptError;
-            script.onload = function () {
-                setTimeout(function () {
-                    doJb();
-                }, 500);
-            };
-            document.head.appendChild(script);
-        }
-        else if (fwNum == 11.50 || fwNum == 11.52) {
-            var script = document.createElement('script');
-            script.type = 'module';
-            script.src = "slopkit/chain_lapse.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        }
-        else if (fwNum >= 12.00 && fwNum <= 14.02) {
-            var script = document.createElement('script');
-            script.type = 'module';
-            script.src = "slopkit/jb.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
-        }
-    }
-}
-</script>
 <header class="fw-hero">
   <span class="fw-hero-num">AUTO</span>
   <span class="fw-hero-tag">GoldHEN Multi Firmware</span>
@@ -93,15 +13,207 @@ if (!isPS4) {
 </header>
 
 <div class="loader-card">
-  <h1 id="msgs" class="loader-msg">Loading GoldHEN v2.4b18.14... Please Wait</h1>
+  <h1 id="msgs" class="loader-msg">Choose your firmware to begin</h1>
   <div class="loader-bar"><span></span></div>
-  <p class="loader-hint">Keep the browser open</p>
+  <p class="loader-hint" id="hint">Detecting your console&hellip;</p>
+</div>
+
+<p class="pick-label"><span>Select your firmware</span></p>
+
+<div class="pick-grid">
+
+  <button type="button" class="pick-card" data-key="505" data-cache="cache505.html" data-min="5.05" data-max="5.07">
+    <span class="pick-badge">Detected</span>
+    <span class="pick-fw">5.05</span>
+    <span class="pick-sub">Host v2.5</span>
+    <span class="pick-cta">Start &rarr;</span>
+  </button>
+
+  <button type="button" class="pick-card" data-key="700" data-cache="cache700.html" data-min="7.00" data-max="8.52">
+    <span class="pick-badge">Detected</span>
+    <span class="pick-fw">7.00 &ndash; 8.52</span>
+    <span class="pick-sub">GoldHEN &middot; alerts</span>
+    <span class="pick-cta">Start &rarr;</span>
+  </button>
+
+  <button type="button" class="pick-card" data-key="900" data-cache="cache900.html" data-min="9.00" data-max="9.60">
+    <span class="pick-badge">Detected</span>
+    <span class="pick-fw">9.00 &ndash; 9.60</span>
+    <span class="pick-sub">GoldHEN &middot; alerts</span>
+    <span class="pick-cta">Start &rarr;</span>
+  </button>
+
+  <button type="button" class="pick-card" data-key="css" data-cache="cachecss.html" data-min="10.00" data-max="11.02">
+    <span class="pick-badge">Detected</span>
+    <span class="pick-fw">10.00 &ndash; 11.02</span>
+    <span class="pick-sub">CSS exploit</span>
+    <span class="pick-cta">Start &rarr;</span>
+  </button>
+
+  <button type="button" class="pick-card" data-key="chain" data-cache="cacheslopkit.html" data-min="11.50" data-max="11.52">
+    <span class="pick-badge">Detected</span>
+    <span class="pick-fw">11.50 &ndash; 11.52</span>
+    <span class="pick-sub">Slopkit &middot; chain</span>
+    <span class="pick-cta">Start &rarr;</span>
+  </button>
+
+  <button type="button" class="pick-card" data-key="slopkit" data-cache="cacheslopkit.html" data-min="12.00" data-max="14.02">
+    <span class="pick-badge">Detected</span>
+    <span class="pick-fw">12.00 &ndash; 14.02</span>
+    <span class="pick-sub">Slopkit</span>
+    <span class="pick-cta">Start &rarr;</span>
+  </button>
+
+</div>
+
+<p class="pick-note">On the PS4 the matching row turns green. The first time, the offline cache is installed &mdash; close and re-open the browser, then pick the same row again to run the jailbreak.</p>
+
+<div class="pick-foot">
+  <a class="back" href="../index.html">&larr; Back to home</a>
 </div>
 
 <div class="thanks">
   <span class="thanks-label">Special thanks</span>
   <a class="person" href="https://twitter.com/_AlAzif">@_AlAzif</a><span class="person">ChendoChap</span><a class="person" href="https://x.com/Kameleonre_">@Kameleonre_</a><span class="person">SiSTR0</span><span class="person">Abc</span>
 </div>
+
+<script>
+var uaFull = navigator.userAgent;
+var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
+var isPS4 = match !== null;
+var fwVersion = isPS4 ? match[1] : "Unknown";
+var fwNum = parseFloat(fwVersion);
+
+var msgEl = document.getElementById('msgs');
+var hintEl = document.getElementById('hint');
+var barEl = document.getElementsByClassName('loader-bar')[0];
+var cards = document.getElementsByClassName('pick-card');
+
+function say(text) { if (msgEl) msgEl.innerHTML = text; }
+function hint(text) { if (hintEl) hintEl.innerHTML = text; }
+
+function onScriptError() {
+    say("Content not Found! - Clear Browser Data and Re-Install Cache ...");
+}
+
+function pick(card) {
+    var key = card.getAttribute('data-key');
+    var cachePage = card.getAttribute('data-cache');
+    var min = parseFloat(card.getAttribute('data-min'));
+    var max = parseFloat(card.getAttribute('data-max'));
+
+    if (!isPS4) {
+        say("Only for PS4 with Firmware 5.05 and 7.00 to 14.02");
+        hint("Open this page on your PS4 to detect the firmware");
+        return;
+    }
+
+    if (fwNum < min || fwNum > max) {
+        var ok = false;
+        try {
+            ok = window.confirm(
+                "This row is for PS4 " + card.getAttribute('data-min') +
+                " - " + card.getAttribute('data-max') +
+                ",\nbut your console is " + fwVersion +
+                ".\n\nContinue anyway?"
+            );
+        } catch (e) { ok = false; }
+        if (!ok) {
+            say("Choose the row for PS4 " + fwVersion);
+            hint("That row does not match your console");
+            return;
+        }
+    }
+
+    /* no offline cache yet -> install it first */
+    if (!window.applicationCache || window.applicationCache.status == 0) {
+        window.location.replace(cachePage);
+        return;
+    }
+
+    say("Loading GoldHEN v2.4b18.14... Please Wait");
+    hint("Keep the browser open");
+    if (barEl) barEl.className = 'loader-bar';
+    startExploit(key);
+}
+
+function startExploit(key) {
+    var script;
+
+    if (key == '505') {
+        script = document.createElement('script');
+        script.src = "505/exploit.js";
+    }
+    else if (key == '700') {
+        script = document.createElement('script');
+        script.type = 'module';
+        script.src = "700/alert.js";
+    }
+    else if (key == '900') {
+        script = document.createElement('script');
+        script.type = 'module';
+        script.src = "900/alert.js";
+    }
+    else if (key == 'css') {
+        script = document.createElement('script');
+        script.src = "css/main.js";
+        script.onload = function () {
+            setTimeout(function () {
+                doJb();
+            }, 500);
+        };
+    }
+    else if (key == 'chain') {
+        script = document.createElement('script');
+        script.type = 'module';
+        script.src = "slopkit/chain_lapse.js";
+    }
+    else if (key == 'slopkit') {
+        script = document.createElement('script');
+        script.type = 'module';
+        script.src = "slopkit/jb.js";
+    }
+    else {
+        return;
+    }
+
+    script.onerror = onScriptError;
+    document.head.appendChild(script);
+}
+
+/* highlight the row that matches this console */
+(function () {
+    var i, card, min, max;
+
+    if (!isPS4) {
+        hint("Open this page on your PS4 to detect the firmware");
+        return;
+    }
+
+    hint("PS4 " + fwVersion + " detected &mdash; tap the highlighted row");
+
+    for (i = 0; i < cards.length; i++) {
+        card = cards[i];
+        min = parseFloat(card.getAttribute('data-min'));
+        max = parseFloat(card.getAttribute('data-max'));
+        if (fwNum >= min && fwNum <= max) {
+            card.className = 'pick-card is-detected';
+        }
+    }
+})();
+
+/* wire the cards (inline onclick would work too, this keeps the markup clean) */
+(function () {
+    var i;
+    function bind(card) {
+        card.onclick = function () { pick(card); };
+    }
+    for (i = 0; i < cards.length; i++) {
+        bind(cards[i]);
+    }
+})();
+</script>
+
 <script>
 /* UI only: turn the loading bar green once a result text appears */
 (function(){
@@ -119,5 +231,6 @@ clearInterval(t);
 }catch(e){}
 })();
 </script>
+
 </body>
 </html>
