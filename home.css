@@ -640,6 +640,21 @@ a { color: inherit; text-decoration: none; }
   color: #6f788e;
 }
 
+.upgrade {
+  margin: 16px 0 0;
+  font-size: 12.5px;
+  letter-spacing: .06em;
+  color: #93a0ba;
+}
+
+.upgrade a {
+  color: #8ee9ff;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(142, 233, 255, .35);
+}
+
+.upgrade a:hover { color: #c9f6ff; }
+
 /* ---------- status bar ---------- */
 
 .statusbar {
