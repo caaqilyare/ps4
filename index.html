@@ -12,117 +12,146 @@
   <span class="blob blob-a"></span>
   <span class="blob blob-b"></span>
   <span class="blob blob-c"></span>
-  <span class="lines"></span>
+  <span class="gridlines"></span>
+  <span class="vignette"></span>
 </div>
 
 <div class="shell">
 
-  <header class="hero">
-    <span class="mark" aria-hidden="true">PS4</span>
-    <h1 class="title">Exploit Host</h1>
-    <p class="tagline">A clean, offline-ready toolkit for your console &middot; GoldHEN payloads from 5.05 up to 14.02</p>
-    <div class="chips">
-      <span class="chip chip-live"><i class="dot"></i>Host online</span>
-      <span class="chip">GoldHEN</span>
-      <span class="chip">5.05 &ndash; 14.02</span>
-      <span class="chip">Offline cache</span>
-    </div>
+  <header class="topbar">
+    <a class="brand" href="index.html" onmouseover="say('PS4 Exploit Host by GamerHack')" onmouseout="say()">
+      <span class="brand-mark">PS4</span>
+      <span class="brand-name">Exploit Host</span>
+    </a>
+    <nav class="topnav">
+      <a href="#firmware" onmouseover="say('Jump to the firmware list')" onmouseout="say()">Firmware</a>
+      <a href="#donate" onclick="donations();return false;"
+         onmouseover="say('Donations in crypto only')" onmouseout="say()">Support</a>
+    </nav>
   </header>
 
   <section id="menu" class="panel on">
 
-    <p class="section-label">Recommended</p>
+    <div class="hero">
+      <span class="eyebrow"><i class="dot"></i>GamerHack edition</span>
+      <h1 class="title">Jailbreak your console<br><em>in one click.</em></h1>
+      <p class="tagline">GoldHEN payloads, offline cache and host restore tools for PS4 &mdash; firmware 5.05 to 14.02, no PC required.</p>
 
-    <a class="feature" href="g2all/index.html"
-       onclick="go('g2all/index.html');return false;"
-       onmouseover="say('PS4 GoldHEN Host for 5.05 and 7.00 to 14.02 FW - (Auto Exploit Selection)')"
-       onmouseout="say()">
-      <span class="feature-glow" aria-hidden="true"></span>
-      <span class="feature-body">
-        <span class="feature-eyebrow">One click &middot; auto detect</span>
-        <span class="feature-title">GoldHEN &mdash; Multi Firmware</span>
-        <span class="feature-sub">Works on 5.05 and 7.00 &rarr; 14.02. The host picks the right exploit for your console.</span>
-      </span>
-      <span class="feature-side">
-        <span class="pill">AUTO</span>
-        <span class="feature-arrow" aria-hidden="true">&rarr;</span>
-      </span>
-    </a>
+      <div class="hero-actions">
+        <a class="btn-main" href="g2all/index.html"
+           onclick="go('g2all/index.html');return false;"
+           onmouseover="say('PS4 GoldHEN Host for 5.05 and 7.00 to 14.02 FW - (Auto Exploit Selection)')"
+           onmouseout="say()">
+          Start GoldHEN <span class="btn-main-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="btn-ghost" href="restore/index.html"
+           onclick="go('restore/index.html');return false;"
+           onmouseover="say('Restore a Host to User&#8217;s Guide without using DNS')"
+           onmouseout="say()">
+          Restore host
+        </a>
+      </div>
 
-    <p class="section-label">Select your firmware</p>
+      <div class="stats">
+        <div class="stat">
+          <strong>5.05 &ndash; 14.02</strong>
+          <span>firmware range</span>
+        </div>
+        <div class="stat">
+          <strong>Auto detect</strong>
+          <span>exploit selection</span>
+        </div>
+        <div class="stat">
+          <strong>Offline</strong>
+          <span>cached on console</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label" id="firmware"><span>Select your firmware</span></p>
 
     <div class="grid">
 
       <a class="card" href="505/index.html"
          onclick="go('505/index.html');return false;"
          onmouseover="say('PS4 5.05 FW Host v2.5')" onmouseout="say()">
+        <span class="ghost" aria-hidden="true">5.05</span>
         <span class="fw">5.05</span>
         <span class="card-name">Host v2.5</span>
         <span class="tag">Legacy</span>
+        <span class="card-arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card" href="672goldhen/index.html"
+      <a class="card card-gold" href="672goldhen/index.html"
          onclick="go('672goldhen/index.html');return false;"
          onmouseover="say('PS4 6.72 FW GoldHEN Host')" onmouseout="say()">
+        <span class="ghost" aria-hidden="true">6.72</span>
         <span class="fw">6.72</span>
         <span class="card-name">GoldHEN</span>
         <span class="tag tag-gold">GoldHEN</span>
+        <span class="card-arrow" aria-hidden="true">&rarr;</span>
       </a>
 
       <a class="card" href="672/index.html"
          onclick="go('672/index.html');return false;"
          onmouseover="say('PS4 6.72 FW Host v3.0')" onmouseout="say()">
+        <span class="ghost" aria-hidden="true">6.72</span>
         <span class="fw">6.72</span>
         <span class="card-name">Host v3.0</span>
         <span class="tag">Payloads</span>
+        <span class="card-arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card" href="900goldhen/index.html"
+      <a class="card card-gold" href="900goldhen/index.html"
          onclick="go('900goldhen/index.html');return false;"
          onmouseover="say('PS4 9.00 FW GoldHEN Host - (FontFaceSet Webkit)')" onmouseout="say()">
+        <span class="ghost" aria-hidden="true">9.00</span>
         <span class="fw">9.00</span>
         <span class="card-name">GoldHEN</span>
         <span class="tag tag-gold">GoldHEN</span>
+        <span class="card-arrow" aria-hidden="true">&rarr;</span>
       </a>
 
       <a class="card" href="900v3/index.html"
          onclick="go('900v3/index.html');return false;"
          onmouseover="say('PS4 9.00 FW Host v3.0 - (FontFaceSet Webkit)')" onmouseout="say()">
+        <span class="ghost" aria-hidden="true">9.00</span>
         <span class="fw">9.00</span>
         <span class="card-name">Host v3.0</span>
         <span class="tag">Payloads</span>
+        <span class="card-arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card card-restore" href="restore/index.html"
+      <a class="card card-dashed" href="restore/index.html"
          onclick="go('restore/index.html');return false;"
-         onmouseover="say('Restore a Host to User&#39;s Guide without using DNS')" onmouseout="say()">
+         onmouseover="say('Restore a Host to User&#8217;s Guide without using DNS')" onmouseout="say()">
+        <span class="ghost" aria-hidden="true">&#8635;</span>
         <span class="fw fw-icon" aria-hidden="true">&#8635;</span>
         <span class="card-name">Restore Host</span>
         <span class="tag tag-dim">No DNS needed</span>
+        <span class="card-arrow" aria-hidden="true">&rarr;</span>
       </a>
 
     </div>
 
-    <div class="donate-row">
-      <a class="donate" href="#donate"
-         onclick="donations();return false;"
-         onmouseover="say('If you like my work you can support me with a donation.')" onmouseout="say()">
-        <span class="donate-icon" aria-hidden="true">&#9829;</span>
-        <span class="donate-text">
-          <strong>Support the project</strong>
-          <em>Donations in crypto &mdash; tap to see addresses</em>
-        </span>
-        <span class="donate-arrow" aria-hidden="true">&rarr;</span>
-      </a>
-    </div>
+    <a class="donate" href="#donate" id="donate"
+       onclick="donations();return false;"
+       onmouseover="say('If you like my work you can support me with a donation.')" onmouseout="say()">
+      <span class="donate-icon" aria-hidden="true">&#9829;</span>
+      <span class="donate-text">
+        <strong>Support the project</strong>
+        <em>Donations in crypto &mdash; tap to see the addresses</em>
+      </span>
+      <span class="donate-arrow" aria-hidden="true">&rarr;</span>
+    </a>
 
   </section>
 
   <section id="crypto" class="panel">
 
-    <p class="section-label">Donations &middot; crypto only</p>
+    <p class="section-label"><span>Donations &middot; crypto only</span></p>
 
-    <div class="grid">
+    <div class="grid-2">
 
       <div class="coin">
         <img src="btc.jpg" alt="Bitcoin QR code" width="104" height="104">
@@ -208,7 +237,6 @@ function copyAddr(id, btn){
   }catch(e){ done = false; }
 
   if(!done){
-    /* Old console browsers have no clipboard - select the address instead */
     var range = document.createRange();
     range.selectNodeContents(el);
     var sel = window.getSelection();
@@ -216,11 +244,8 @@ function copyAddr(id, btn){
     sel.addRange(range);
   }
 
-  var label = done ? 'Copied' : 'Selected';
-  btn.innerHTML = label;
-  setTimeout(function(){
-    btn.innerHTML = 'Copy address';
-  }, 1600);
+  btn.innerHTML = done ? 'Copied' : 'Selected';
+  setTimeout(function(){ btn.innerHTML = 'Copy address'; }, 1600);
 }
 </script>
 
